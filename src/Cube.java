@@ -278,4 +278,40 @@ public class Cube {
         return true ;
 
     }
+
+    public void copie(Cube cube) {
+        this.Front[0][0] = cube.getFront()[0][0] ;
+        this.Front[0][1] = cube.getFront()[0][1] ;
+        this.Front[1][0] = cube.getFront()[1][0] ;
+        this.Front[1][1] = cube.getFront()[1][1] ;
+
+        this.Back[0][0] = cube.getBack()[0][0] ;
+        this.Back[0][1] = cube.getBack()[0][1] ;
+        this.Back[1][0] = cube.getBack()[1][0] ;
+        this.Back[1][1] = cube.getBack()[1][1] ;
+
+
+        this.Right[0][0] = cube.getRight()[0][0] ;
+        this.Right[0][1] = cube.getRight()[0][1] ;
+        this.Right[1][0] = cube.getRight()[1][0] ;
+        this.Right[1][1] = cube.getRight()[1][1] ;
+
+
+        this.Left[0][0] = cube.getLeft()[0][0] ;
+        this.Left[0][1] = cube.getLeft()[0][1] ;
+        this.Left[1][0] = cube.getLeft()[1][0] ;
+        this.Left[1][1] = cube.getLeft()[1][1] ;
+
+
+        this.Up[0][0] = cube.getUp()[0][0] ;
+        this.Up[0][1] = cube.getUp()[0][1] ;
+        this.Up[1][0] = cube.getUp()[1][0] ;
+        this.Up[1][1] = cube.getUp()[1][1] ;
+
+        this.Down[0][0] = cube.getDown()[0][0] ;
+        this.Down[0][1] = cube.getDown()[0][1] ;
+        this.Down[1][0] = cube.getDown()[1][0] ;
+        this.Down[1][1] = cube.getDown()[1][1] ;
+
+    }
 }
