@@ -7,10 +7,10 @@ public class Cube {
     String[][]  Back ;
 
     public Cube() {
-        Up = new String[][] {{"y", "y"}, {"y", "y"}};
-        Down =  new String[][] {{"w" , "w"} , {"w" , "w"}} ;
-        Right =  new String[][] {{"o" , "o"} , {"o" , "o"}} ;
-        Left = new String[][] {{"r" , "r"} , {"r" , "r"}} ;
+        Up = new String[][] {{"w" , "w"} , {"w" , "w"}};
+        Down =  new String[][]  {{"y", "y"}, {"y", "y"}};
+        Right =  new String[][]  {{"r" , "r"} , {"r" , "r"}} ;
+        Left = new String[][] {{"o" , "o"} , {"o" , "o"}} ;
         Front =  new String[][] {{"g" , "g"} , {"g" , "g"}} ;
         Back = new String[][]  {{"b" , "b"} , {"b" , "b"}} ;
 
@@ -198,6 +198,32 @@ public class Cube {
         rotateDownClkw() ;
         rotateDownClkw() ;
         rotateDownClkw() ;
+    }
+
+    public void show() {
+        System.out.println("front : ") ;
+        System.out.println(Front[0][0] + " " + Front[0][1]) ;
+        System.out.println(Front[1][0] + " " + Front[1][1]) ;
+
+        System.out.println("right : ") ;
+        System.out.println(Right[0][0] + " " + Right[0][1]) ;
+        System.out.println(Right[1][0] + " " + Right[1][1]) ;
+
+        System.out.println("back : ") ;
+        System.out.println(Back[0][0] + " " + Back[0][1]) ;
+        System.out.println(Back[1][0] + " " + Back[1][1]) ;
+
+        System.out.println("left : ") ;
+        System.out.println(Left[0][0] + " " + Left[0][1]) ;
+        System.out.println(Left[1][0] + " " + Left[1][1]) ;
+
+        System.out.println("up : ") ;
+        System.out.println(Up[0][0] + " " + Up[0][1]) ;
+        System.out.println(Up[1][0] + " " + Up[1][1]) ;
+
+        System.out.println("down : ") ;
+        System.out.println(Down[0][0] + " " + Down[0][1]) ;
+        System.out.println(Down[1][0] + " " + Down[1][1]) ;
     }
 
 }
