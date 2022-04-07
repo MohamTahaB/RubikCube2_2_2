@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Cube {
     String[][] Up ;
     String[][] Down ;
@@ -250,7 +252,26 @@ public class Cube {
         return Back;
     }
 
-    public boolean equals(Cube cube) {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cube cube = (Cube) o;
+        return Arrays.equals(Up, cube.Up) && Arrays.equals(Down, cube.Down) && Arrays.equals(Right, cube.Right) && Arrays.equals(Left, cube.Left) && Arrays.equals(Front, cube.Front) && Arrays.equals(Back, cube.Back);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Arrays.hashCode(Up);
+        result = 31 * result + Arrays.hashCode(Down);
+        result = 31 * result + Arrays.hashCode(Right);
+        result = 31 * result + Arrays.hashCode(Left);
+        result = 31 * result + Arrays.hashCode(Front);
+        result = 31 * result + Arrays.hashCode(Back);
+        return result;
+    }
+
+    /*public boolean equals(Cube cube) {
         boolean ans =  (this.Front[0][0] == cube.getFront()[0][0] && this.Front[0][1] == cube.getFront()[0][1] && this.Front[1][0] == cube.getFront()[1][0] && this.Front[1][1] == cube.getFront()[1][1]) ;
         if (!ans) {
             return false ;
@@ -277,7 +298,7 @@ public class Cube {
         }
         return true ;
 
-    }
+    }*/
 
     public void copie(Cube cube) {
         this.Front[0][0] = cube.getFront()[0][0] ;

@@ -3,32 +3,35 @@ import java.util.ArrayList;
 public class Node {
 
     private Cube currentCube ;
-    private Cube fatherCube ;
+    private Node fatherCube ;
     private ArrayList<Node> sons ;
+    private int level ;
 
 
-    public Node( Cube currentCube , Cube fatherCube , ArrayList<Node> sons) {
+    public Node( Cube currentCube , Node fatherCube , ArrayList<Node> sons, int level) {
         this.currentCube = currentCube ;
         this.fatherCube = fatherCube ;
         this.sons = sons ;
+        this.level = level ;
     }
 
 
-    public Node( Cube currentCube , Cube fatherCube ) {
+    public Node( Cube currentCube , Node fatherCube , int level) {
         this.currentCube = currentCube ;
         this.fatherCube = fatherCube ;
         this.sons = null ;
+        this.level = level ;
     }
 
     public void addSon(Cube son) {
-        sons.add(new Node(son , currentCube)) ;
+        sons.add(new Node(son , this , level + 1)) ;
     }
 
     public Cube getCurrentCube() {
         return currentCube;
     }
 
-    public Cube getFatherCube() {
+    public Node getFatherCube() {
         return fatherCube;
     }
 
@@ -40,11 +43,19 @@ public class Node {
         this.currentCube = currentCube;
     }
 
-    public void setFatherCube(Cube fatherCube) {
+    public void setFatherCube(Node fatherCube) {
         this.fatherCube = fatherCube;
     }
 
     public void setSons(ArrayList<Node> sons) {
         this.sons = sons;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getLevel() {
+        return level;
     }
 }
