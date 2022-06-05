@@ -19,7 +19,7 @@ public class Node {
     public Node( Cube currentCube , Node fatherCube , int level) {
         this.currentCube = currentCube ;
         this.fatherCube = fatherCube ;
-        this.sons = null ;
+        this.sons = new ArrayList<Node>() ;
         this.level = level ;
     }
 
