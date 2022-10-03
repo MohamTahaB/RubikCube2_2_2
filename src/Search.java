@@ -1,18 +1,22 @@
 import java.util.*;
 
 public class Search {
-    private final Node initialNode ;
-    private final int k ;
-    private HashSet<Cube> passed ;
-    private ArrayDeque<Node> toPass ;
-    private Cube solution = new Cube() ;
+    public final Node initialNode ;
+    public final int k ;
+    public HashSet<Cube> passed ;
+    public ArrayDeque<Node> toPass ;
+    public Cube solution = new Cube() ;
 
     public Search(Cube cube) {
-        initialNode = new Node(cube , null , 0) ;
+        this.initialNode = new Node(cube , null , 0) ;
         k = 20 ;
         passed = new HashSet<Cube>() ;
         toPass = new ArrayDeque<>() ;
-        addToPass(this.initialNode); ;
+        getToPass().push(this.initialNode);
+        System.out.print("here is topass size after creation : ") ;
+        System.out.println(getToPass().size());
+        System.out.print("here is passed size after creation : ") ;
+        System.out.println(getPassed().size());
     }
 
 
@@ -22,28 +26,40 @@ public class Search {
 
 
     public void incrementSearch() {
+        System.out.print("Now here is topass size : ") ;
+        System.out.println(getToPass().size());
+        System.out.print("Now here is passed size : ") ;
+        System.out.println(getPassed().size());
         Node currentNode = getToPass().remove() ;
         if (currentNode.getCurrentCube().equals(solution)) {
             System.out.println("Solution found at level "  + currentNode.getLevel()) ;
         }
         else {
-            passed.add(currentNode.getCurrentCube()) ;
+            getPassed().add(currentNode.getCurrentCube()) ;
             Cube aux = currentNode.getCurrentCube() ;
+            aux.show();
 
             // rotatefrntclkw
             aux.rotateFrontClkw();
-            if (!passed.contains(aux)) {
-                passed.add(aux) ;
+            aux.show();
+            System.out.println(getPassed().contains(aux));
+            if (!getPassed().contains(aux)) {
+                getPassed().add(aux) ;
                 currentNode.addSon(aux);
-                addToPass(currentNode.getSons().get(currentNode.getSons().size() - 1)); ;
+                getToPass().push(currentNode.getSons().get(currentNode.getSons().size() - 1));
+                System.out.println(1);
+                System.out.print("db topass size : ") ;
+                System.out.println(getToPass().size());
+                System.out.print("db passed size : ") ;
+                System.out.println(getPassed().size());
             }
             aux.rotateFrontAntiClkw();
 
             aux.rotateFrontAntiClkw();
-            if (!passed.contains(aux)) {
-                passed.add(aux) ;
+            if (!getPassed().contains(aux)) {
+                getPassed().add(aux) ;
                 currentNode.addSon(aux);
-                addToPass(currentNode.getSons().get(currentNode.getSons().size() - 1)); ;
+                getToPass().push(currentNode.getSons().get(currentNode.getSons().size() - 1)); ;
             }
             aux.rotateFrontClkw();
 
@@ -51,20 +67,20 @@ public class Search {
             //rotate back
 
             aux.rotateBackClkw();
-            if (!passed.contains(aux)) {
-                passed.add(aux) ;
+            if (!getPassed().contains(aux)) {
+                getPassed().add(aux) ;
                 currentNode.addSon(aux);
-                addToPass(currentNode.getSons().get(currentNode.getSons().size() - 1)); ;
+                getToPass().push(currentNode.getSons().get(currentNode.getSons().size() - 1)); ;
             }
 
             aux.rotateBackAntiClkw();
 
             aux.rotateBackAntiClkw();
 
-            if (!passed.contains(aux)) {
-                passed.add(aux) ;
+            if (!getPassed().contains(aux)) {
+                getPassed().add(aux) ;
                 currentNode.addSon(aux);
-                addToPass(currentNode.getSons().get(currentNode.getSons().size() - 1)); ;
+                getToPass().push(currentNode.getSons().get(currentNode.getSons().size() - 1)); ;
             }
 
             aux.rotateBackClkw();
@@ -72,20 +88,20 @@ public class Search {
             //right rotation ;
             aux.rotateRightClkw();
 
-            if (!passed.contains(aux)) {
-                passed.add(aux) ;
+            if (!getPassed().contains(aux)) {
+                getPassed().add(aux) ;
                 currentNode.addSon(aux);
-                addToPass(currentNode.getSons().get(currentNode.getSons().size() - 1)); ;
+                getToPass().push(currentNode.getSons().get(currentNode.getSons().size() - 1)); ;
             }
 
             aux.rotateRightAntiClkw();
 
             aux.rotateRightAntiClkw();
 
-            if (!passed.contains(aux)) {
-                passed.add(aux) ;
+            if (!getPassed().contains(aux)) {
+                getPassed().add(aux) ;
                 currentNode.addSon(aux);
-                addToPass(currentNode.getSons().get(currentNode.getSons().size() - 1)); ;
+                getToPass().push(currentNode.getSons().get(currentNode.getSons().size() - 1)); ;
             }
 
             aux.rotateRightClkw();
@@ -94,40 +110,40 @@ public class Search {
 
             aux.rotateLeftClkw();
 
-            if (!passed.contains(aux)) {
-                passed.add(aux) ;
+            if (!getPassed().contains(aux)) {
+                getPassed().add(aux) ;
                 currentNode.addSon(aux);
-                addToPass(currentNode.getSons().get(currentNode.getSons().size() - 1)); ;
+                getToPass().push(currentNode.getSons().get(currentNode.getSons().size() - 1)); ;
             }
 
             aux.rotateLeftAntiClkw();
 
             aux.rotateLeftAntiClkw();
 
-            if (!passed.contains(aux)) {
-                passed.add(aux) ;
+            if (!getPassed().contains(aux)) {
+                getPassed().add(aux) ;
                 currentNode.addSon(aux);
-                addToPass(currentNode.getSons().get(currentNode.getSons().size() - 1)); ;
+                getToPass().push(currentNode.getSons().get(currentNode.getSons().size() - 1)); ;
             }
 
             //up rotation
 
             aux.rotateUpClkw();
 
-            if (!passed.contains(aux)) {
-                passed.add(aux) ;
+            if (!getPassed().contains(aux)) {
+                getPassed().add(aux) ;
                 currentNode.addSon(aux);
-                addToPass(currentNode.getSons().get(currentNode.getSons().size() - 1)); ;
+                getToPass().push(currentNode.getSons().get(currentNode.getSons().size() - 1)); ;
             }
 
             aux.rotateUpAntiClkw();
 
             aux.rotateUpAntiClkw();
 
-            if (!passed.contains(aux)) {
-                passed.add(aux) ;
+            if (!getPassed().contains(aux)) {
+                getPassed().add(aux) ;
                 currentNode.addSon(aux);
-                addToPass(currentNode.getSons().get(currentNode.getSons().size() - 1)); ;
+                getToPass().push(currentNode.getSons().get(currentNode.getSons().size() - 1)); ;
             }
 
             aux.rotateUpClkw();
@@ -136,20 +152,20 @@ public class Search {
 
             aux.rotateDownClkw();
 
-            if (!passed.contains(aux)) {
-                passed.add(aux) ;
+            if (!getPassed().contains(aux)) {
+                getPassed().add(aux) ;
                 currentNode.addSon(aux);
-                addToPass(currentNode.getSons().get(currentNode.getSons().size() - 1)); ;
+                getToPass().push(currentNode.getSons().get(currentNode.getSons().size() - 1)); ;
             }
 
             aux.rotateDownAntiClkw();
 
             aux.rotateDownAntiClkw();
 
-            if (!passed.contains(aux)) {
-                passed.add(aux) ;
+            if (!getPassed().contains(aux)) {
+                getPassed().add(aux) ;
                 currentNode.addSon(aux);
-                addToPass(currentNode.getSons().get(currentNode.getSons().size() - 1)); ;
+                getToPass().push(currentNode.getSons().get(currentNode.getSons().size() - 1)); ;
             }
 
             aux.rotateDownClkw();
@@ -159,5 +175,9 @@ public class Search {
 
     public ArrayDeque<Node> getToPass() {
         return toPass;
+    }
+
+    public HashSet<Cube> getPassed() {
+        return passed;
     }
 }
