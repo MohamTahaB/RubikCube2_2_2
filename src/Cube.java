@@ -18,6 +18,26 @@ public class Cube {
 
     }
 
+    public Cube(Cube c) {
+        Up = new String[2][2];
+        Down = new String[2][2];
+        Right = new String[2][2];
+        Left = new String[2][2];
+        Front = new String[2][2];
+        Back = new String[2][2];
+
+        for (int i = 0 ; i < 2 ; i++){
+            for (int j = 0 ; j < 2 ; j++) {
+                this.Up[i][j] = c.getUp()[i][j] ;
+                this.Down[i][j] = c.getDown()[i][j] ;
+                this.Right[i][j] = c.getRight()[i][j] ;
+                this.Left[i][j] = c.getLeft()[i][j] ;
+                this.Front[i][j] = c.getFront()[i][j] ;
+                this.Back[i][j] = c.getBack()[i][j] ;
+            }
+        }
+    }
+
     public void rotateFrontClkw(){
         //first rotation of front
         String att = Front[0][1] ;
